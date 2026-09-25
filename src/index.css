@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --poetic-bg: #FAF6F2;
+    --poetic-rose: #FDA4AF;
+    --rose-gold: #DDA7A5;
+    --poetic-text: #54363F;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #FAF6F2;
+    color: #54363F;
+    font-family: 'Plus Jakarta Sans', 'Lora', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Soft Floral Scrollbar */
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAF6F2;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #FDA4AF 0%, #DDA7A5 100%);
+    border-radius: 9999px;
+    border: 2px solid #FAF6F2;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FB7185;
+  }
+}
+
+@layer utilities {
+  /* French Arched Windows / Frames */
+  .arch-frame {
+    border-radius: 120px 120px 24px 24px;
+  }
+
+  .arch-frame-sm {
+    border-radius: 70px 70px 18px 18px;
+  }
+
+  /* Poetic Glassmorphism */
+  .glass-poetic {
+    background: rgba(255, 253, 250, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(235, 192, 197, 0.5);
+  }
+
+  .glass-poetic-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-poetic-hover:hover {
+    background: rgba(255, 245, 248, 0.95);
+    border-color: rgba(244, 114, 182, 0.6);
+    box-shadow: 0 15px 35px -5px rgba(244, 114, 182, 0.22);
+    transform: translateY(-4px);
+  }
+
+  /* Rose Gold Text Shadows & Glow */
+  .text-glow-rosegold {
+    text-shadow: 0 0 16px rgba(221, 167, 165, 0.55), 0 0 30px rgba(253, 164, 175, 0.3);
+  }
+
+  .text-glow-pink {
+    text-shadow: 0 0 16px rgba(251, 113, 133, 0.45), 0 0 30px rgba(253, 164, 175, 0.25);
+  }
+}
+
+/* Equalizer Bars in Rose Gold & Pink */
+.eq-bar-poetic {
+  display: inline-block;
+  width: 3px;
+  background: #DDA7A5;
+  border-radius: 9999px;
+  animation: eq-bounce-poetic 1s ease-in-out infinite alternate;
+}
+
+.eq-bar-poetic:nth-child(1) { height: 50%; animation-delay: 0.1s; }
+.eq-bar-poetic:nth-child(2) { height: 95%; animation-delay: 0.3s; }
+.eq-bar-poetic:nth-child(3) { height: 35%; animation-delay: 0.2s; }
+.eq-bar-poetic:nth-child(4) { height: 75%; animation-delay: 0.4s; }
+
+@keyframes eq-bounce-poetic {
+  0% { transform: scaleY(0.35); }
+  100% { transform: scaleY(1); }
+}
