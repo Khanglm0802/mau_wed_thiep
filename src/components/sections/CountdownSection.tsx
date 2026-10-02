@@ -70,25 +70,25 @@ export const CountdownSection: React.FC = () => {
       </div>
 
       {/* 4 Columns side-by-side on all screens for clean mobile appearance */}
-      <div className="grid grid-cols-4 gap-2 sm:gap-4 max-w-2xl mx-auto">
+      <div className="grid grid-cols-4 gap-1.5 min-[380px]:gap-2.5 sm:gap-4 max-w-2xl mx-auto">
         {blocks.map((block, index) => (
           <motion.div
             key={index}
             whileHover={{ y: -3, scale: 1.03 }}
-            className="p-2 sm:p-5 bg-white/90 border border-rosegold/30 rounded-xl sm:rounded-2xl text-center shadow-[0_4px_16px_rgba(221,167,165,0.18)] group"
+            className="p-1.5 min-[380px]:p-3 sm:p-5 bg-white/90 border border-rosegold/30 rounded-xl sm:rounded-2xl text-center shadow-[0_4px_16px_rgba(221,167,165,0.18)] group"
           >
             {/* Number */}
-            <div className="font-display text-xl sm:text-4xl md:text-5xl font-bold tracking-tight text-rose-500 drop-shadow-sm">
+            <div className="font-display text-lg min-[360px]:text-xl min-[400px]:text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-rose-500 drop-shadow-sm">
               {block.value}
             </div>
 
             {/* Label */}
-            <div className="mt-1 font-serif text-[10px] sm:text-xs tracking-wider text-poetic-muted uppercase group-hover:text-rosegold-dark transition-colors">
+            <div className="mt-0.5 sm:mt-1 font-serif text-[9px] min-[360px]:text-[10px] sm:text-xs tracking-wider text-poetic-muted uppercase group-hover:text-rosegold-dark transition-colors">
               {block.label}
             </div>
 
             {/* Subtle bottom blush bar */}
-            <div className="mt-1.5 sm:mt-2 h-0.5 w-6 sm:w-10 mx-auto bg-gradient-to-r from-transparent via-rose-300 to-transparent" />
+            <div className="mt-1 sm:mt-2 h-0.5 w-4 min-[380px]:w-7 sm:w-10 mx-auto bg-gradient-to-r from-transparent via-rose-300 to-transparent" />
           </motion.div>
         ))}
       </div>

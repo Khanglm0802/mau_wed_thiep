@@ -97,24 +97,24 @@ export const LinkGeneratorModal: React.FC = () => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-2.5 sm:p-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative w-full max-w-2xl max-h-[90vh] bg-white rounded-3xl border border-rosegold/50 shadow-[0_20px_60px_rgba(221,167,165,0.4)] overflow-hidden flex flex-col"
+          className="relative w-full max-w-2xl max-h-[92dvh] bg-white rounded-3xl border border-rosegold/50 shadow-[0_20px_60px_rgba(221,167,165,0.4)] overflow-hidden flex flex-col"
         >
           {/* Modal Header */}
-          <div className="flex items-center justify-between p-5 sm:p-6 border-b border-rose-100 bg-rose-50/50">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-rose-100 border border-rose-200 text-rose-500 flex items-center justify-center">
-                <Share2 className="w-5 h-5" />
+          <div className="flex items-center justify-between p-3.5 sm:p-6 border-b border-rose-100 bg-rose-50/50">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-rose-100 border border-rose-200 text-rose-500 flex items-center justify-center flex-shrink-0">
+                <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <h3 className="font-display text-lg sm:text-xl font-bold text-poetic-text">
+                <h3 className="font-display text-base sm:text-xl font-bold text-poetic-text">
                   TẠO THIỆP MỜI CHO TỪNG KHÁCH
                 </h3>
-                <p className="text-xs font-serif italic text-poetic-muted">
+                <p className="text-[11px] sm:text-xs font-serif italic text-poetic-muted">
                   Tạo link riêng hiển thị đúng tên từng người thân yêu trên thiệp
                 </p>
               </div>
@@ -122,41 +122,41 @@ export const LinkGeneratorModal: React.FC = () => {
 
             <button
               onClick={() => setIsLinkGenOpen(false)}
-              className="w-9 h-9 rounded-full bg-white text-stone-400 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition-colors shadow-sm"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white text-stone-400 hover:text-rose-600 hover:bg-rose-50 flex items-center justify-center transition-colors shadow-sm cursor-pointer"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
 
           {/* Tabs */}
-          <div className="flex p-3 gap-2 bg-rose-50/30 border-b border-rose-100">
+          <div className="flex p-2 sm:p-3 gap-2 bg-rose-50/30 border-b border-rose-100">
             <button
               onClick={() => setTab('single')}
-              className={`flex-1 py-2.5 px-4 font-serif text-xs sm:text-sm font-semibold rounded-full transition-all flex items-center justify-center gap-2 ${
+              className={`flex-1 py-2 sm:py-2.5 px-3 sm:px-4 font-serif text-xs sm:text-sm font-semibold rounded-full transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${
                 tab === 'single'
                   ? 'bg-rose-400 text-white shadow-sm'
                   : 'text-poetic-muted hover:text-rose-600 hover:bg-rose-50'
               }`}
             >
-              <User className="w-4 h-4" />
+              <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               Tạo Cho 1 Khách
             </button>
 
             <button
               onClick={() => setTab('batch')}
-              className={`flex-1 py-2.5 px-4 font-serif text-xs sm:text-sm font-semibold rounded-full transition-all flex items-center justify-center gap-2 ${
+              className={`flex-1 py-2 sm:py-2.5 px-3 sm:px-4 font-serif text-xs sm:text-sm font-semibold rounded-full transition-all flex items-center justify-center gap-1.5 sm:gap-2 ${
                 tab === 'batch'
                   ? 'bg-rose-400 text-white shadow-sm'
                   : 'text-poetic-muted hover:text-rose-600 hover:bg-rose-50'
               }`}
             >
-              <Users className="w-4 h-4" />
+              <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               Tạo Hàng Loạt (Excel)
             </button>
           </div>
 
           {/* Tab Content */}
-          <div className="p-5 sm:p-6 overflow-y-auto space-y-6 flex-1">
+          <div className="p-3.5 sm:p-6 overflow-y-auto space-y-5 sm:space-y-6 flex-1">
             {tab === 'single' ? (
               <div>
                 <form onSubmit={handleGenerateSingle} className="space-y-4">

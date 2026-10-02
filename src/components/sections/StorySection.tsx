@@ -19,7 +19,7 @@ export const StorySection: React.FC = () => {
         accent="rosegold"
       />
 
-      <PoeticCard variant="glass" className="p-5 sm:p-10 md:p-12 relative overflow-hidden">
+      <PoeticCard variant="glass" className="p-3.5 min-[380px]:p-5 sm:p-10 md:p-12 relative overflow-hidden">
         {/* Soft Background Floral / Heart Watermark */}
         <Quote className="absolute -top-6 -right-6 w-36 sm:w-48 h-36 sm:h-48 text-rose-200/20 pointer-events-none rotate-12" />
 
@@ -31,7 +31,7 @@ export const StorySection: React.FC = () => {
             viewport={{ once: true }}
             className="md:col-span-5 flex justify-center"
           >
-            <div className="relative w-48 h-64 sm:w-64 sm:h-84 arch-frame p-2 sm:p-2.5 bg-white border-2 border-rosegold/50 shadow-[0_15px_35px_rgba(221,167,165,0.3)] overflow-hidden group">
+            <div className="relative w-44 h-60 min-[380px]:w-52 min-[380px]:h-72 sm:w-64 sm:h-[350px] md:w-60 md:h-[340px] lg:w-72 lg:h-[400px] arch-frame p-2 sm:p-2.5 bg-white border-2 border-rosegold/50 shadow-[0_15px_35px_rgba(221,167,165,0.3)] overflow-hidden group">
               <div className="w-full h-full arch-frame overflow-hidden relative">
                 <img
                   src={images.storyPortrait}

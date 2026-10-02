@@ -9,9 +9,22 @@ export const InteractiveSwipeReel: React.FC = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 1024
+  );
   const touchStartX = useRef<number | null>(null);
 
   const total = marqueePhotos.length;
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+    };
+  }, []);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % total);
@@ -25,7 +38,7 @@ export const InteractiveSwipeReel: React.FC = () => {
   useEffect(() => {
     if (!isAutoPlay) return;
     const timer = setInterval(() => {
-      handleNext();
+      setCurrentIndex((prev) => (prev + 1) % total);
     }, 4500);
     return () => clearInterval(timer);
   }, [isAutoPlay, total]);
@@ -49,8 +62,24 @@ export const InteractiveSwipeReel: React.FC = () => {
     touchStartX.current = null;
   };
 
+  // Responsive sizing matrix for phone, iPad, laptop
+  const getCardMetrics = (width: number) => {
+    if (width < 380) {
+      return { cardClass: 'w-[195px] h-[275px]', offsetStep: 95 };
+    }
+    if (width < 640) {
+      return { cardClass: 'w-[230px] h-[320px]', offsetStep: 130 };
+    }
+    if (width < 1024) {
+      return { cardClass: 'w-[270px] h-[365px]', offsetStep: 180 };
+    }
+    return { cardClass: 'w-[300px] h-[395px]', offsetStep: 225 };
+  };
+
+  const { cardClass, offsetStep } = getCardMetrics(windowWidth);
+
   return (
-    <section className="py-12 sm:py-16 bg-gradient-to-b from-transparent via-rose-50/50 to-transparent relative overflow-hidden select-none w-full">
+    <section className="py-10 sm:py-16 bg-gradient-to-b from-transparent via-rose-50/50 to-transparent relative overflow-hidden select-none w-full">
       {/* Background Soft Aura */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[550px] h-[250px] sm:h-[350px] bg-pink-200/25 rounded-full blur-[80px] pointer-events-none" />
 
@@ -76,28 +105,28 @@ export const InteractiveSwipeReel: React.FC = () => {
           onTouchEnd={handleTouchEnd}
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}
-          className="relative w-full max-w-4xl mx-auto min-h-[340px] sm:min-h-[460px] flex items-center justify-center"
+          className="relative w-full max-w-4xl mx-auto min-h-[300px] sm:min-h-[440px] flex items-center justify-center"
         >
-          {/* Previous Button */}
+          {/* Previous Button (Accessible touch size 44px+) */}
           <button
             onClick={handlePrev}
             aria-label="Previous Slide"
-            className="absolute left-1 sm:left-6 z-30 w-9 h-9 sm:w-13 sm:h-13 rounded-full bg-white/90 border border-rose-200 text-rose-500 hover:bg-rose-500 hover:text-white shadow-md flex items-center justify-center transition-all backdrop-blur-md"
+            className="absolute left-1 sm:left-4 md:left-6 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 border border-rose-200 text-rose-500 hover:bg-rose-500 hover:text-white shadow-lg flex items-center justify-center transition-all backdrop-blur-md cursor-pointer active:scale-95"
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
-          {/* Next Button */}
+          {/* Next Button (Accessible touch size 44px+) */}
           <button
             onClick={handleNext}
             aria-label="Next Slide"
-            className="absolute right-1 sm:right-6 z-30 w-9 h-9 sm:w-13 sm:h-13 rounded-full bg-white/90 border border-rose-200 text-rose-500 hover:bg-rose-500 hover:text-white shadow-md flex items-center justify-center transition-all backdrop-blur-md"
+            className="absolute right-1 sm:right-4 md:right-6 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 border border-rose-200 text-rose-500 hover:bg-rose-500 hover:text-white shadow-lg flex items-center justify-center transition-all backdrop-blur-md cursor-pointer active:scale-95"
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Cards Display with 3D Depth & Romantic Arched / Polaroid Frames */}
-          <div className="relative w-full h-[330px] sm:h-[440px] flex items-center justify-center overflow-hidden">
+          <div className="relative w-full h-[300px] min-[380px]:h-[340px] sm:h-[420px] flex items-center justify-center overflow-hidden">
             {marqueePhotos.map((src, index) => {
               let offset = index - currentIndex;
               if (offset < -Math.floor(total / 2)) offset += total;
@@ -119,14 +148,14 @@ export const InteractiveSwipeReel: React.FC = () => {
                     }
                   }}
                   animate={{
-                    x: offset * (typeof window !== 'undefined' && window.innerWidth < 640 ? 120 : 210),
+                    x: offset * offsetStep,
                     scale: isCenter ? 1 : Math.abs(offset) === 1 ? 0.82 : 0.65,
-                    rotateY: offset * -18,
+                    rotateY: offset * -16,
                     zIndex: 20 - Math.abs(offset) * 5,
-                    opacity: isCenter ? 1 : Math.abs(offset) === 1 ? 0.75 : 0.3,
+                    opacity: isCenter ? 1 : Math.abs(offset) === 1 ? 0.75 : 0.28,
                   }}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                  className={`absolute w-56 h-[310px] sm:w-76 sm:h-[390px] rounded-3xl overflow-hidden cursor-pointer transition-shadow duration-500 bg-white p-2 sm:p-2.5 shadow-lg ${
+                  className={`absolute ${cardClass} rounded-3xl overflow-hidden cursor-pointer transition-shadow duration-500 bg-white p-2 sm:p-2.5 shadow-lg ${
                     isCenter
                       ? 'border-2 border-rosegold shadow-[0_15px_35px_rgba(221,167,165,0.4)] ring-2 sm:ring-4 ring-rose-100'
                       : 'border border-rose-100'

@@ -61,7 +61,13 @@ export const BouncingMascot: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-4 left-3 sm:bottom-6 sm:left-6 z-40 flex items-end gap-2 select-none pointer-events-auto">
+    <div
+      style={{
+        bottom: 'max(1rem, env(safe-area-inset-bottom))',
+        left: 'max(0.75rem, env(safe-area-inset-left))',
+      }}
+      className="fixed z-40 flex items-end gap-2 select-none pointer-events-auto"
+    >
       {/* Speech Bubble - Desktop & Tablet */}
       <AnimatePresence>
         {showBubble && (
@@ -69,7 +75,7 @@ export const BouncingMascot: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8, y: 10, x: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            className="relative max-w-[210px] sm:max-w-[250px] p-3.5 bg-white/95 border border-rosegold/50 rounded-2xl shadow-[0_10px_25px_rgba(221,167,165,0.35)] backdrop-blur-xl text-left hidden md:block"
+            className="relative max-w-[200px] sm:max-w-[240px] p-3 sm:p-3.5 bg-white/95 border border-rosegold/50 rounded-2xl shadow-[0_10px_25px_rgba(221,167,165,0.35)] backdrop-blur-xl text-left hidden md:block"
           >
             <div className="flex items-center gap-1.5 text-[10px] font-serif uppercase tracking-widest text-rosegold-dark mb-1">
               <Sparkles className="w-3 h-3 text-rose-400 animate-spin-slow" />
@@ -106,7 +112,7 @@ export const BouncingMascot: React.FC = () => {
         <div className="absolute -inset-2 bg-gradient-to-tr from-rose-300 via-pink-200 to-amber-200 rounded-full blur-md opacity-70 group-hover:opacity-100 transition-opacity animate-pulse-soft" />
 
         {/* Mascot Avatar Card */}
-        <div className="relative w-13 h-13 sm:w-16 sm:h-16 rounded-full bg-white border-2 border-rosegold shadow-[0_8px_25px_rgba(221,167,165,0.55)] flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-110">
+        <div className="relative w-12 h-12 min-[380px]:w-14 min-[380px]:h-14 sm:w-16 sm:h-16 rounded-full bg-white border-2 border-rosegold shadow-[0_8px_25px_rgba(221,167,165,0.55)] flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-110">
           <span className="text-2xl sm:text-3xl select-none group-hover:scale-125 transition-transform duration-300">
             🌸
           </span>

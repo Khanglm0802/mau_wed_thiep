@@ -52,15 +52,15 @@ export const RSVPSection: React.FC = () => {
         accent="rosegold"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* RSVP Form Box */}
-        <div className="lg:col-span-6">
-          <PoeticCard variant="cream" className="p-5 sm:p-8">
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-poetic-text mb-2 flex items-center gap-2">
+        <div className="md:col-span-6">
+          <PoeticCard variant="cream" className="p-3.5 min-[380px]:p-5 sm:p-8">
+            <h3 className="font-display text-lg min-[380px]:text-xl sm:text-2xl font-bold text-poetic-text mb-2 flex items-center gap-2">
               <span className="text-rose-500">💌</span>
               PHIẾU XÁC NHẬN THAM DỰ
             </h3>
-            <p className="text-poetic-muted font-serif italic text-xs sm:text-sm mb-5 sm:mb-6">
+            <p className="text-poetic-muted font-serif italic text-xs sm:text-sm mb-4 sm:mb-6">
               {rsvp.description}
             </p>
 
@@ -79,7 +79,7 @@ export const RSVPSection: React.FC = () => {
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-4 sm:mt-5 px-5 py-2 font-serif text-xs uppercase tracking-wider text-rose-600 hover:text-rose-800 border border-rose-300 rounded-full transition-colors bg-white shadow-sm"
+                  className="mt-4 sm:mt-5 px-5 py-2 font-serif text-xs uppercase tracking-wider text-rose-600 hover:text-rose-800 border border-rose-300 rounded-full transition-colors bg-white shadow-sm cursor-pointer"
                 >
                   Gửi thêm lời chúc khác
                 </button>
@@ -97,7 +97,7 @@ export const RSVPSection: React.FC = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Ví dụ: Hoàng Yến, Minh Thư..."
-                    className="w-full px-4 py-3 bg-white border border-rose-200 rounded-2xl text-poetic-text font-serif text-base sm:text-sm focus:outline-none focus:border-rose-400 focus:shadow-[0_0_15px_rgba(244,114,182,0.25)] transition-all"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-white border border-rose-200 rounded-2xl text-poetic-text font-serif text-base sm:text-sm focus:outline-none focus:border-rose-400 focus:shadow-[0_0_15px_rgba(244,114,182,0.25)] transition-all"
                   />
                 </div>
 
@@ -109,7 +109,7 @@ export const RSVPSection: React.FC = () => {
                   <select
                     value={formData.guestsCount}
                     onChange={(e) => setFormData({ ...formData, guestsCount: Number(e.target.value) })}
-                    className="w-full px-4 py-3 bg-white border border-rose-200 rounded-2xl text-poetic-text font-serif text-base sm:text-sm focus:outline-none focus:border-rose-400 transition-all"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-white border border-rose-200 rounded-2xl text-poetic-text font-serif text-base sm:text-sm focus:outline-none focus:border-rose-400 transition-all"
                   >
                     <option value={1}>Đi 1 mình (Ghé thăm)</option>
                     <option value={2}>Đi 2 người (Cùng người thương / bạn thân)</option>
@@ -124,7 +124,7 @@ export const RSVPSection: React.FC = () => {
                   </label>
                   <div className="space-y-2">
                     <label
-                      className={`flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl border cursor-pointer transition-all ${
+                      className={`flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 rounded-2xl border cursor-pointer transition-all ${
                         formData.attendance === 'yes'
                           ? 'bg-rose-50 border-rose-400 text-rose-800 shadow-sm'
                           : 'bg-white border-rose-100 text-poetic-muted hover:border-rose-200'
@@ -149,7 +149,7 @@ export const RSVPSection: React.FC = () => {
                     </label>
 
                     <label
-                      className={`flex items-center gap-3 p-3 sm:p-3.5 rounded-2xl border cursor-pointer transition-all ${
+                      className={`flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 rounded-2xl border cursor-pointer transition-all ${
                         formData.attendance === 'no'
                           ? 'bg-stone-50 border-stone-300 text-stone-700'
                           : 'bg-white border-rose-100 text-poetic-muted hover:border-rose-200'
@@ -185,7 +185,7 @@ export const RSVPSection: React.FC = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Viết đôi dòng nhắn nhủ ngọt ngào tại đây..."
-                    className="w-full px-4 py-3 bg-white border border-rose-200 rounded-2xl text-poetic-text font-serif text-base sm:text-sm focus:outline-none focus:border-rose-400 transition-all resize-none"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-white border border-rose-200 rounded-2xl text-poetic-text font-serif text-base sm:text-sm focus:outline-none focus:border-rose-400 transition-all resize-none"
                   />
                 </div>
 
@@ -206,8 +206,8 @@ export const RSVPSection: React.FC = () => {
         </div>
 
         {/* Guestbook Sổ Lưu Bút Box */}
-        <div className="lg:col-span-6">
-          <PoeticCard variant="cream" className="p-5 sm:p-8 h-full">
+        <div className="md:col-span-6">
+          <PoeticCard variant="cream" className="p-3.5 min-[380px]:p-5 sm:p-8 h-full">
             <div className="flex items-center justify-between pb-4 mb-4 sm:mb-6 border-b border-rose-100">
               <h3 className="font-display text-base sm:text-xl font-bold text-poetic-text flex items-center gap-2">
                 <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 text-rose-400" />

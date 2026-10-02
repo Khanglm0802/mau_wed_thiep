@@ -111,7 +111,7 @@ export const DEFAULT_CONFIG: AppConfig = {
   },
 
   giftBox: {
-    enabled: true,
+    enabled: false,
     title: "HỘP QUÀ GỬI TRỌN YÊU THƯƠNG",
     description: "Nếu bạn ở xa hoặc muốn gửi gắm lời chúc mừng cùng món quà yêu thương đến Nguyên Mai:",
     accounts: [

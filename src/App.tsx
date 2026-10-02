@@ -10,7 +10,6 @@ import { VenueSection } from './components/sections/VenueSection';
 import { StorySection } from './components/sections/StorySection';
 import { GallerySection } from './components/sections/GallerySection';
 import { RSVPSection } from './components/sections/RSVPSection';
-import { GiftBoxSection } from './components/sections/GiftBoxSection';
 import { ThankYouSection } from './components/sections/ThankYouSection';
 import { Footer } from './components/layout/Footer';
 import { LightboxModal } from './components/modals/LightboxModal';
@@ -55,10 +54,7 @@ function MainApp() {
         {/* Section 7: Sweet RSVP & Guestbook */}
         <RSVPSection />
 
-        {/* Section 8: Tribute Gift Box & VietQR */}
-        <GiftBoxSection />
-
-        {/* Section 9: Sweet Gratitude / Thank You */}
+        {/* Section 8: Sweet Gratitude / Thank You */}
         <ThankYouSection />
 
         {/* Footer */}

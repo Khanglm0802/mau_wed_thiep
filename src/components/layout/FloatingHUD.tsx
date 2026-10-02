@@ -37,7 +37,13 @@ export const FloatingHUD: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2 sm:gap-3 pointer-events-auto">
+    <div
+      style={{
+        bottom: 'max(1rem, env(safe-area-inset-bottom))',
+        right: 'max(0.75rem, env(safe-area-inset-right))',
+      }}
+      className="fixed z-50 flex flex-col items-end gap-2 sm:gap-3 pointer-events-auto"
+    >
       {/* Scroll to Top */}
       <AnimatePresence>
         {showScrollTop && (
@@ -47,7 +53,7 @@ export const FloatingHUD: React.FC = () => {
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             onClick={scrollToTop}
             title="Lướt về đầu trang"
-            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-rose-200 text-rose-500 shadow-[0_6px_16px_rgba(244,114,182,0.25)] hover:shadow-[0_12px_28px_rgba(244,114,182,0.45)] hover:bg-rose-50 hover:text-rose-600 flex items-center justify-center transition-all backdrop-blur-md"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-rose-200 text-rose-500 shadow-[0_6px_16px_rgba(244,114,182,0.25)] hover:shadow-[0_12px_28px_rgba(244,114,182,0.45)] hover:bg-rose-50 hover:text-rose-600 flex items-center justify-center transition-all backdrop-blur-md cursor-pointer"
           >
             <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5" />
           </motion.button>
@@ -60,7 +66,7 @@ export const FloatingHUD: React.FC = () => {
         <button
           onClick={toggleAudio}
           title={audioPlaying ? 'Tạm dừng nhạc nền' : 'Phát nhạc nền (Công Tử Văn Thơ)'}
-          className={`relative w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-400 overflow-hidden flex-shrink-0 ${
+          className={`relative w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-400 overflow-hidden flex-shrink-0 cursor-pointer ${
             audioPlaying
               ? 'bg-gradient-to-tr from-rose-400 to-rose-500 text-white shadow-[0_0_15px_rgba(251,113,133,0.55)]'
               : 'bg-rose-50 text-rose-400 hover:text-rose-600 hover:bg-rose-100'
@@ -95,7 +101,7 @@ export const FloatingHUD: React.FC = () => {
         <button
           onClick={toggleParticles}
           title={particlesEnabled ? 'Tắt hiệu ứng bướm & cánh hoa' : 'Bật hiệu ứng bướm & cánh hoa'}
-          className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-300 ${
+          className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer ${
             particlesEnabled
               ? 'bg-rose-100 text-rose-500 border border-rose-200 shadow-sm'
               : 'bg-stone-100 text-stone-400 hover:text-stone-600'
@@ -109,7 +115,7 @@ export const FloatingHUD: React.FC = () => {
           <button
             onClick={() => setIsLinkGenOpen(true)}
             title="Tạo đường link mời riêng cho khách"
-            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-rosegold-light/40 text-rosegold-dark border border-rosegold/50 shadow-sm hover:bg-rosegold hover:text-white flex items-center justify-center transition-all duration-300"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-rosegold-light/40 text-rosegold-dark border border-rosegold/50 shadow-sm hover:bg-rosegold hover:text-white flex items-center justify-center transition-all duration-300 cursor-pointer"
           >
             <Share2 className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
@@ -120,7 +126,7 @@ export const FloatingHUD: React.FC = () => {
           <button
             onClick={() => setIsCustomizerOpen(true)}
             title="Bảng điều khiển & Tùy biến nhanh"
-            className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-purple-50 text-purple-500 border border-purple-200 shadow-sm hover:bg-purple-100 hover:text-purple-700 flex items-center justify-center transition-all duration-300"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-purple-50 text-purple-500 border border-purple-200 shadow-sm hover:bg-purple-100 hover:text-purple-700 flex items-center justify-center transition-all duration-300 cursor-pointer"
           >
             <Wand2 className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>

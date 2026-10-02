@@ -51,10 +51,10 @@ export const GallerySection: React.FC = () => {
         </div>
       )}
 
-      {/* Photo Grid */}
+      {/* Photo Grid (Fluid Multi-Device Grid: 1 col on mobile, 2 cols on tablet/iPad, 3 cols on desktop) */}
       <motion.div
         layout
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"
+        className="grid grid-cols-1 min-[500px]:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
       >
         <AnimatePresence>
           {filteredPhotos.map((photo, index) => {
@@ -68,7 +68,7 @@ export const GallerySection: React.FC = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
                 onClick={() => openLightbox(originalIndex >= 0 ? originalIndex : index)}
-                className="group relative h-72 sm:h-92 bg-white rounded-3xl p-2.5 sm:p-3 border border-rosegold/30 hover:border-rose-300 transition-all duration-400 overflow-hidden cursor-pointer shadow-[0_10px_30px_rgba(221,167,165,0.2)] hover:shadow-[0_20px_45px_rgba(244,114,182,0.25)] hover:-translate-y-1.5"
+                className="group relative h-64 min-[400px]:h-72 sm:h-80 md:h-[340px] lg:h-[380px] bg-white rounded-3xl p-2.5 sm:p-3 border border-rosegold/30 hover:border-rose-300 transition-all duration-400 overflow-hidden cursor-pointer shadow-[0_10px_30px_rgba(221,167,165,0.2)] hover:shadow-[0_20px_45px_rgba(244,114,182,0.25)] hover:-translate-y-1.5"
               >
                 <div className="w-full h-full rounded-2xl overflow-hidden relative">
                   <img
@@ -81,8 +81,8 @@ export const GallerySection: React.FC = () => {
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
-                  {/* Hover Trigger Icon */}
-                  <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/85 text-rose-500 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110 shadow-md">
+                  {/* Hover/Tap Trigger Icon - visible softly on mobile touch */}
+                  <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 text-rose-500 flex items-center justify-center opacity-85 sm:opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110 shadow-md">
                     <Maximize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
 
